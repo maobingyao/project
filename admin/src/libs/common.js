@@ -11,3 +11,16 @@ export function removeItem (key) {
 export function clearItem () {
     localStorage.clear();
 }
+// 设置全局公共函数存取、删除sessionstorage
+export function setSession (key,value) {
+    sessionStorage.setItem(key,value);
+}
+export function getSession (key) {
+    return sessionStorage.getItem(key);
+}
+export function removeSession (key) {
+    sessionStorage.removeItem(key);
+}
+export function clearSession () {
+    sessionStorage.clear();
+}
