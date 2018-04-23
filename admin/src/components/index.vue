@@ -50,9 +50,12 @@
     }
     .closeColl i{
         margin-left: 14px;
+        transform:rotate(90deg);
+
     }
     .ivu-menu-item{
         background: #362f2c;
+        transition: font-size .2s ease, transform .2s ease;
     }
 </style>
 <template>
@@ -76,7 +79,7 @@
     </div>
 </template>
 <script>
-    import {setSession , getSession , removeSession , clearSession} from '../libs/common';
+    import {setSession , getSession , removeSession , clearSession , setItem , getItem , removeItem} from '../libs/common';
     export default {
         props: ['permission'],
         data () {
@@ -98,8 +101,12 @@
             if(this.permission){
                 setSession('permission',this.permission)                
             };
-            console.log(this.indexForm)
-
+             if(getItem('Liststate') ==1){
+                this.isCollapsed = true;
+            }else{
+                this.isCollapsed = false;
+                
+            }
         },
         created () {
             if(getSession('permission') !== null){
@@ -123,6 +130,11 @@
         methods: {
             collapsedSider () {
                 this.$refs.side1.toggleCollapse();
+                if(this.isCollapsed == true ){
+                    setItem('Liststate',1);
+                }else{
+                    setItem('Liststate',0);
+                }
             }
         }
     }
