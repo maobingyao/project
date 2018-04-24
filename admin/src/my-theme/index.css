@@ -1,3 +1,15 @@
 /* 此文件是覆盖iview默认样式的自定义样式 */
 /* 在此文件添加内容时，最好备注下覆盖的地方或者是修改的文件 */
 @import 'iview/dist/styles/iview.css';
+.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu){
+    border: none;
+}
+.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) span{
+    color: #d2ab66;
+}
+.ivu-menu-vertical .ivu-menu-item:hover{
+    background: #362f2c;
+}
+ .ivu-menu-vertical .ivu-menu-submenu-title:hover{
+    background: transparent;
+}
