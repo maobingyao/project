@@ -68,6 +68,7 @@
         background: #fff;
         height: 50px;
         padding: 0 30px;
+        border-bottom:1px solid #ececec; 
     }
     .indexLogo{
         padding-left:56px ;
@@ -128,6 +129,9 @@
     .ivu-menu-opened .indexArrow{
         transform:rotate(90deg);
     }
+    .formBox{
+        overflow-x: auto!important;
+    }
 </style>
 <template>
     <div class="layout">
@@ -161,7 +165,7 @@
                         </Submenu>
                     </Menu>
                 </Sider>
-                <Layout>
+                <Layout class="formBox">
                     <router-view></router-view>
                 </Layout>
             </Layout>
@@ -176,7 +180,7 @@
             return {
                 indexForm:[{
                     item:'项目受理',
-                    children:[{subitem:'企业信息',linkTo:'/index/sub1'},{subitem:'项目申请列表',linkTo:'/index/sub1'}]
+                    children:[{subitem:'企业信息',linkTo:'/index/projectForm'},{subitem:'项目申请列表',linkTo:'/index/sub1'}]
                 },{
                     item:'合同评审',
                     children:[{subitem:'合同评审',linkTo:'/index/sub1'}]
@@ -196,7 +200,6 @@
             }else{
                 this.isCollapsed = false;  
             }
-            console.log(this.indexForm)
         },
         created () {
             if(getSession('permission') !== null){
