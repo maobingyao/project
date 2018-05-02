@@ -4,7 +4,7 @@ import App from '@/App'
 import Login from '@/components/login'
 import Index from '@/components/index'
 import projectForm from '@/components/projectForm'
-
+import addCompany from '@/components/addCompany'
 Vue.use(Router)
 
 export default new Router({
@@ -24,6 +24,10 @@ export default new Router({
           path: 'projectForm',
           name:'projectForm',
           component: projectForm
+      },{
+        path: 'addCompany',
+        name:'addCompany',
+        component: addCompany
       }],
       props: true,
       component:Index

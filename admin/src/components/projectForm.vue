@@ -13,16 +13,44 @@
         margin-top: 20px;
         margin-right: 10px;
     }
+    .addCompany{
+        width: 104px;
+        height: 32px;
+        padding-left: 26px;
+        text-align: center;
+        line-height: 32px;
+        font-size: 14px;
+        background:url('../assets/img/addCompany.png') 12px center  no-repeat #d2ab66;
+        border: none;
+        border-radius: 4px;
+        float: right;
+        cursor: pointer;
+    }
+    .btnsBox:after{
+        display:block;
+        clear:both;
+        content:"";
+        visibility:hidden;
+        height:0;
+        margin-bottom: 12px;
+    }
+    .addCompany a{
+        color: #fff;
+    }
 </style>
 
 <template >
     <div>
         <Content :style="{margin: '20px', background: '#f5f7f9'}">
+            <div class="btnsBox">
+                <button class="addCompany">
+                    <router-link to="/index/addCompany">添加企业</router-link>
+                </button>
+            </div>
             <Table :stripe="true" border :columns="columns" :data="historyData" class="contentForm"></Table>
             <Page class="partPage" :total="dataCount" show-elevator :page-size="pageSize" show-total  @on-change="changepage"></Page>     
         </Content>
     </div>
-    <!-- <Page :total="100" show-elevator></Page> -->
 </template>
 <script>
 let testData = {
@@ -47,134 +75,85 @@ let testData = {
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
             linkNumber:'15658119999',
             companyPhone:'0574-86729899'
-        },
-        {
-            companyName: '杭州证客信息科技有限公司',
-            pactSource: '0001张三',
-            linkMan: '李四',
-            linkNumber:'15658119999',
-            companyPhone:'0574-86729899'
-        },
-        {
-            companyName: '杭州证客信息科技有限公司',
-            pactSource: '0001张三',
-            linkMan: '李四',
-            linkNumber:'15658119999',
-            companyPhone:'0574-86729899'
-        },
-        {
-            companyName: '杭州证客信息科技有限公司',
-            pactSource: '0001张三',
-            linkMan: '李四',
-            linkNumber:'15658119999',
-            companyPhone:'0574-86729899'
-        },
-        {
-            companyName: '杭州证客信息科技有限公司',
-            pactSource: '0001张三',
-            linkMan: '李四',
-            linkNumber:'15658119999',
-            companyPhone:'0574-86729899'
-        },
-        {
-            companyName: '杭州证客信息科技有限公司',
-            pactSource: '0001张三',
-            linkMan: '李四',
-            linkNumber:'15658119999',
-            companyPhone:'0574-86729899'
-        },
-        {
+        },{
             companyName: '杭州证客信息科技有限公司',
             pactSource: '0001张三',
             linkMan: '李四',
@@ -260,13 +239,24 @@ export default {
         },
     methods: {
         show (index) {
-            this.$Modal.info({
+            this.$Modal.confirm({
                 // title: 'User Info',
                 // content: `Name：${this.data6[index].name}<br>Age：${this.data6[index].age}<br>Address：${this.data6[index].address}`
             })
         },
         remove (index) {
-            this.data6.splice(index, 1);
+            const that = this;
+            this.$Modal.confirm({
+                title: '提醒',
+                content: `您确定删除此公司？`,
+                cancelText:'取消',
+                onOk:function () {
+                    testData.histories.splice(index, 1);
+                    that.handleListApproveHistory();
+                }
+             })
+            // testData.histories.splice(index, 1);
+            // this.handleListApproveHistory();
         },
         // 获取历史记录信息
         handleListApproveHistory(){

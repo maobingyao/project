@@ -16,7 +16,6 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         vertical-align: bottom;
-        transition: width .2s ease .2s;
         color: #fff;
     }
     .menu-item i{
@@ -27,10 +26,11 @@
     }
     .collapsed-menu span{
         width: 0px;
-        transition: width .2s ease;
     }
     .autoColl{
-        text-align: center;
+        width: 180px;
+        text-align: left;
+        padding-left: 25px;
         font-size: 14px;
         color: #fff;
         line-height: 40px;
@@ -42,6 +42,7 @@
         white-space: nowrap;
         vertical-align: bottom;
         display: inline-block;
+        transition: width .2s ease;
     }
     .autoColl i{
         display: inline-block;
@@ -57,7 +58,6 @@
         transition: width .2s ease;
     }
     .closeColl i{
-        margin-left: -8px;
         transform:rotate(90deg);
     }
     .ivu-menu-item{
@@ -67,7 +67,7 @@
     .indexHeader{
         background: #fff;
         height: 50px;
-        padding: 0 30px;
+        padding: 0 18px;
         border-bottom:1px solid #ececec; 
     }
     .indexLogo{
@@ -106,7 +106,7 @@
         background: url('../assets/img/icon.png') center no-repeat;
     }
     .collapsed-menu .icon{
-        margin-left: -8px;
+        margin-left: -20px;
     }
     .indexSider{
         overflow: hidden;
@@ -122,6 +122,7 @@
         height: 10px;
         background: url('../assets/img/icon_arrow.png') center center no-repeat;
         margin-top: 4px;
+        margin-right: 16px;
     }
     .indexTitle{
         padding-left: 8px;
@@ -131,6 +132,12 @@
     }
     .formBox{
         overflow-x: auto!important;
+    }
+    .hintBox{
+        width: 40px;
+    }
+    .hintBox1{
+        width: 22px;
     }
 </style>
 <template>
@@ -145,7 +152,7 @@
                 </div>
             </Header>
             <Layout>
-                <Sider class="indexSider"  width="180" ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+                <Sider class="indexSider"  width="180" ref="side1" hide-trigger collapsible :collapsed-width="64" v-model="isCollapsed">
                     <div  @click="collapsedSider" :class="rotateIcon">
                         <i></i>
                         <span>收起</span>
@@ -153,14 +160,24 @@
                     <Menu  :class="menuitemClasses">
                         <Submenu :name ='index' :key="index" v-for="(item,index) in indexForm">
                             <template slot="title"  class="indexTitle">
-                                <i class="indexArrow"></i>
-                                <span>{{item.item}}</span>
+                                <Tooltip :content="item.item" placement = "right" transfer :disabled ="!isCollapsed">
+                                    <div :class="isCollapsed ? 'hintBox' : ''">
+                                        <i class="indexArrow"></i>
+                                        <span>{{item.item}}</span>
+                                    </div>
+                                </Tooltip>
                             </template>
                             <MenuItem class="subMenu" :key="key" :name='`${index}-${key}`'  v-for="(subitem1,key) in item.children">
+                                <Tooltip :content="subitem1.subitem" placement = "right" transfer :disabled ="!isCollapsed">
+                            
                                 <router-link  :to="subitem1.linkTo || ''">
+                                    <div :class="isCollapsed ? 'hintBox1' : ''">
                                     <i class="icon"></i>
                                     <span>{{subitem1.subitem}}</span>
+                                    </div>                                    
                                 </router-link>
+                                </Tooltip>
+                                
                             </MenuItem>
                         </Submenu>
                     </Menu>
