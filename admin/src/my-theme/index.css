@@ -13,3 +13,6 @@
  .ivu-menu-vertical .ivu-menu-submenu-title:hover{
     background: transparent;
 }
+tr.ivu-table-row-hover td {
+    background-color: #fff6e6
+}

@@ -37,6 +37,10 @@
     .addCompany a{
         color: #fff;
     }
+    thead th{
+        background: #d2ab66!important;
+        color: #fff!important;
+    }
 </style>
 
 <template >
@@ -47,7 +51,7 @@
                     <router-link to="/index/addCompany">添加企业</router-link>
                 </button>
             </div>
-            <Table :stripe="true" border :columns="columns" :data="historyData" class="contentForm"></Table>
+            <Table  border :columns="columns" :data="historyData" class="contentForm"></Table>
             <Page class="partPage" :total="dataCount" show-elevator :page-size="pageSize" show-total  @on-change="changepage"></Page>     
         </Content>
     </div>
